@@ -11,7 +11,7 @@ import json
 
 def openFile(filename):
     """Opens Jsonfile and returns all the data"""
-    with open("files/"+filename, mode="r") as jsonFile:
+    with open("data/"+filename, mode="r") as jsonFile:
         data = json.load(jsonFile)
     return data
 

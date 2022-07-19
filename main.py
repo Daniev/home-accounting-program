@@ -8,7 +8,7 @@ import logging
 
 import wx
 
-import control.filehandler  # will be moved
+from control import filehandler, startup
 
 
 def getLogger():
@@ -30,6 +30,8 @@ def getLogger():
 def main():
     """Main function"""
     log = getLogger()
+    if startup.isFirstTime():
+        startup.makeFiles
     app = wx.App()
 
     log.info("Initializing window...")

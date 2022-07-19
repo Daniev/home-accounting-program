@@ -2,9 +2,11 @@
 tweakable
 ---------------------------
 Here you will find constants that are likely to be tweaked.
-Used throuaout the project
+Used throughout the project
 ---------------------------
 """
+from control import startup
+
 
 def BALANCE_CATEGORIES():
     """Dicts where:
@@ -23,6 +25,11 @@ def RESULT_CATEGORIES():
     rc.append("income")
     rc.append("loan payout")
     return rc
+
+
+if __name__ == "__main__":
+    # run tweakable to reset the datafiles
+    startup.makeFiles()
 
 
  
