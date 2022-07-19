@@ -6,17 +6,28 @@
 tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
  
 ## TODO
-- make tweakable.py 
 ###- copy stuff from other projects (DONE)
   - move filehandler
   - resultmanager
-
-
-
 - create project structure (DONE)
 
-- make main window
-- make popup window
 
-- make startup
-- make dictmapper
+
+### branch: feat: data setup
+- feat: make files startup(DONE)
+- feat: setup data files (startup)
+- feat: make dictmapper
+
+### branch: feat: gui
+- feat: main window
+- feat: popup window/ entries can be created by user
+- feat: balance sheet can be viewed
+- feat: results can be seen
+extra:
+
+- feat: results can be seen for different months
+
+### branch: feat: data manipulation
+- feat: entries get stored
+- feat: entries changes balance values
+- feat: entries changes result values

@@ -8,7 +8,7 @@ import logging
 
 import wx
 
-from control import filehandler, startup
+from control import startup
 
 
 def getLogger():
@@ -24,21 +24,15 @@ def getLogger():
     log.addHandler(ch)
     return log
 
-
-
-
 def main():
     """Main function"""
     log = getLogger()
     if startup.isFirstTime():
         startup.makeFiles
+    log.info("Initializing window...")
     app = wx.App()
 
-    log.info("Initializing window...")
     app.MainLoop()
-
-    entry_manager.update_entry_size_json()
-
 
 if __name__ == "__main__":
      main()
