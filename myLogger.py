@@ -13,3 +13,5 @@ def getLogger():
     ch.setFormatter(formatter)
     log.addHandler(ch)
     return log
+
+log = getLogger()

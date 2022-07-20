@@ -11,7 +11,7 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
   - resultmanager
 - create project structure (DONE)
 
-
+- Do i need a result class????
 
 ### branch: feat: data setup
 - feat: make files startup(DONE)
@@ -28,6 +28,7 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
 extra:
 
 - feat: results can be seen for different months
+  - requires new json format or multiple files..
 
 ### branch: feat: data manipulation
 - feat: entries get stored

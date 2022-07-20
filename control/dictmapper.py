@@ -2,10 +2,10 @@
 dictmapper
 ------------------------
 maps dictionaries (output/input from json files)
-to model classes
-
+to model classes used to create the interface for the backend.
 ------------------------
 """
+from ..model import balance, entry, result
 
 
 class BalMapper():
@@ -14,12 +14,16 @@ class BalMapper():
         pass
 
     @staticmethod
-    def dictToClass():
-        pass
+    def dictToClass(name,dictValue):
+        return balance.Balance(name, dictValue["init_value"],
+                dictValue["value"])
 
     @staticmethod
-    def classToDict():
-       pass
+    def classToDict(balInstance):
+        dict = {}
+        dict[balInstance.name] = {"inital_value": balInstance.initV,
+                "value":balInstance.value}
+        return dict
 
 class ResMapper():
     "Static Function class"
@@ -27,9 +31,32 @@ class ResMapper():
        pass
 
     @staticmethod
-    def dictToClass():
-       pass
+    def dictToClass(key, value):
+        return result.Result(key, value)
 
     @staticmethod
-    def classToDict():
-       pass
+    def classToDict(resInst):
+        dict = {}
+        dict[resInst.name] = resInst.value
+        return dict
+
+
+class EntryMapper():
+    "static class for entries"
+    def __init__(self) -> None:
+        pass
+
+    @staticmethod
+    def dictToClass(dict):
+       return entry.Entry(dict["date"], dict["value"],
+               dict["post"], dict["comment"])
+
+    @staticmethod
+    def classToDict(res):
+        return {"date": res.date, "value": res.value,
+                "post": res.post, "comment": res.comment}
+if __name__ == "__main__":
+    balanceEntry = BalMapper.dictToClass("bank", {"init_value": 5000, "value":6000})
+    print(f"class: {balanceEntry.name}, {balanceEntry.value}")
+    
+    
