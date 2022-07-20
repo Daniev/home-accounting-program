@@ -17,7 +17,7 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
 - feat: make files startup(DONE)
 - feat: setup data files (startup)
   1. finish tweakable.py (DONE)
-  2. add to makeFiles()
+  2. add to makeFiles()(DONE)
 - feat: make dictmapper
 
 ### branch: feat: gui

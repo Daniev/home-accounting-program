@@ -29,9 +29,8 @@ def makeFiles():
     isExisting = os.path.exists(dataDir)
     if not isExisting:
         os.makedirs(dataDir)
-    fh.openFile("results.json")
-    fh.openFile("balances.json")
-    fh.openFile("entries.json")
+
+    fh.writeFile("entries.json", [])
 
     log.info("files created successfully...")
 
