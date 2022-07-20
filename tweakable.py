@@ -37,7 +37,7 @@ def BALANCE_CATEGORIES():
 def RESULT_CATEGORIES():
     """List of all result categories"""
     rc = []
-    rc.append("other_income") # gifts, interests, investmentincome etc
+    rc.append("other_income") # gifts, interests, investmentincome etch
     rc.append("wages") # work income
     rc.append("loan_payout") #income from loan
 
@@ -53,8 +53,7 @@ def RESULT_CATEGORIES():
     rc.append("food")
     rc.append("entertainment") # streaming services etc
     rc.append("interior") # things needed in a household including tools
-    rc.append("hobby") # music equpment, technology, nitting etc
-
+    rc.append("hobby") # music equpment etc
     return rc
 
 
