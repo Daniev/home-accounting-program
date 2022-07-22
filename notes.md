@@ -13,12 +13,12 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
 
 - Do i need a result class????
 
-### branch: feat: data setup
+### branch: feat: data setup (DONE)
 - feat: make files startup(DONE)
 - feat: setup data files (startup)
   1. finish tweakable.py (DONE)
   2. add to makeFiles()(DONE)
-- feat: make dictmapper
+- feat: make dictmapper(DONE)
 
 ### branch: feat: gui
 - feat: main window
