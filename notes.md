@@ -35,3 +35,6 @@ extra:
 - feat: entries get stored
 - feat: entries changes balance values
 - feat: entries changes result values
+
+## extra features:
+  extra button and dialog for special transfers -> like between two balance accounts...

@@ -1,8 +1,10 @@
 """
 window
-----------------------
-main window of gui
----------------------
+--------------------------------------------------------------
+main window/ frame of gui. Consists of multiple
+notebooks/tabs with different content, all of which are loaded
+at stratup.
+---------------------------------------------------------------
 """
 
 

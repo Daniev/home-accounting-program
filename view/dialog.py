@@ -1,12 +1,13 @@
 """
 dialog
------------------------------
+--------------------------------------
 popup for adding entries
------------------------------
+--------------------------------------
 """
 import wx
 
-from tweakable import RESULT_CATEGORIES
+from myLogger import log
+from tweakable import BANKS, RESULT_CATEGORIES
 
 
 class Dialog (wx.Dialog):
@@ -28,12 +29,25 @@ class Dialog (wx.Dialog):
 
         poSizer = wx.BoxSizer(wx.HORIZONTAL)
         infPost = wx.StaticText(self, label="Enter post from list")
-        self.inputPost = wx.ListCtrl(self)
+        self.inputPost = wx.ComboBox(self)
         # loop to get RESULT_CATEGORIES
+        i = 0
+        for category in RESULT_CATEGORIES():
+            self.inputPost.Insert(category, i)
+            i += 1
+    
+        self.inputPost.AutoComplete(RESULT_CATEGORIES())
         self.addSizer([infPost, self.inputPost], poSizer)
+        
         payBySizer = wx.BoxSizer(wx.HORIZONTAL)
         infPayBy = wx.StaticText(self, label="Which account did the payment")
-        self.inputPayBy = wx.Listbook(self)
+        self.inputPayBy = wx.ComboBox(self)
+        i = 0
+        for category in BANKS:
+            self.inputPayBy.Insert(category, i)
+            i += 1
+        self.inputPayBy.AutoComplete(BANKS)
+            
         self.addSizer([infPayBy, self.inputPayBy], payBySizer)
 
         cSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -61,6 +75,10 @@ class Dialog (wx.Dialog):
 
 
     def submitEntry(self, event):
+        log.info("Submitting entry...")
+
+
+        log.info("Success!")
         pass
 
     def exitDialog(self, event):

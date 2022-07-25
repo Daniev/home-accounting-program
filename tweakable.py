@@ -7,6 +7,7 @@ Used throughout the project
 """
 from control import startup
 
+BANKS = ["user_account", "bills_account", "short_savings", "long_savings"]
 
 def BALANCE_CATEGORIES():
     """Dicts where:
