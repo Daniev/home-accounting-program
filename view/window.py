@@ -13,7 +13,7 @@ from view import mainpanel
 
 class Window(wx.Frame):
     def __init__(self):
-        super().__init__() # add size and title
+        super().__init__(parent=None) # add size and title
         self.makeContent()
 
 

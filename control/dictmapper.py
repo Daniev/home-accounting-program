@@ -48,13 +48,13 @@ class EntryMapper():
 
     @staticmethod
     def dictToClass(dict):
-       return entry.Entry(dict["date"], dict["value"],
-               dict["post"], dict["comment"])
+       return entry.Entry(dict["month"], dict["value"],
+               dict["post"], dict["payBy"], dict["comment"])
 
     @staticmethod
     def classToDict(res):
-        return {"date": res.date, "value": res.value,
-                "post": res.post, "comment": res.comment}
+        return {"month": res.month, "value": res.value,
+                "post": res.post, "payBy": res.payBy,"comment": res.comment}
 if __name__ == "__main__":
     balanceEntry = BalMapper.dictToClass("bank", {"init_value": 5000, "value":6000})
     print(f"class: {balanceEntry.name}, {balanceEntry.value}")

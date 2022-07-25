@@ -23,6 +23,7 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
 ### branch: feat: gui
 - feat: main window
 - feat: popup window/ entries can be created by user
+    include: pay_by
 - feat: balance sheet can be viewed
 - feat: results can be seen
 extra:

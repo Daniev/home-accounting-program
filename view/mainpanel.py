@@ -20,10 +20,11 @@ class MainPanel(wx.Panel):
         # show entries
         vSizer =wx.BoxSizer(wx.VERTICAL)
         self.displayEntries = wx.ListView(self)
-        self.displayEntries.InsertColumn(0, "date")
+        self.displayEntries.InsertColumn(0, "month")
         self.displayEntries.InsertColumn(1, "value")
         self.displayEntries.InsertColumn(2, "post")
-        self.displayEntries.InsertColumn(3, "comment")
+        self.displayEntries.InsertColumn(3, "payed_by")
+        self.displayEntries.InsertColumn(4, "comment")
 
         # make entries button
         addButton = wx.Button(self)
