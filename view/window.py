@@ -13,13 +13,13 @@ from view import mainpanel
 
 class Window(wx.Frame):
     def __init__(self):
-        super().__init__(parent=None) # add size and title
+        super().__init__(parent=None, size=wx.Size(905, 705)) # add size and title
         self.makeContent()
 
 
     def makeContent(self):
         vSizer = wx.BoxSizer(wx.VERTICAL)
-        notebook = wx.Notebook(self, wx.RIGHT)
+        notebook = wx.Notebook(self, wx.RIGHT, size=wx.Size(900, 700))
         defaultPanel = mainpanel.MainPanel(notebook)
         notebook.AddPage(defaultPanel, "entries")
         self.addSizer([notebook], vSizer)

@@ -8,12 +8,13 @@ add a new entry
 
 import wx
 
-# from view import dialog
+from view import dialog
 
 
 class MainPanel(wx.Panel):
     def __init__(self, parent):
-        super().__init__(parent)
+        super().__init__(parent, size=wx.Size(900,700))
+        self.dialog = dialog.Dialog(self)
         self.makeContent()
 
     def makeContent(self):
@@ -27,17 +28,31 @@ class MainPanel(wx.Panel):
         self.displayEntries.InsertColumn(4, "comment")
 
         # make entries button
-        addButton = wx.Button(self)
+        addButton = wx.Button(self, label="add entry")
         addButton.Bind(wx.EVT_BUTTON, self.showDialog)
-        self.addSizer([self.displayEntries, addButton], vSizer)
+
+        refreshButton = wx.Button(self, label="refresh entries")
+        refreshButton.Bind(wx.EVT_BUTTON, self.refreshEntries)
+        self.addSizer([self.displayEntries, addButton, refreshButton], vSizer)
+
+        self.SetSizer(vSizer)
 
 
 
     def showDialog(self, event):
-        pass
+        if not self.dialog:
+            self.dialog = dialog.Dialog(self)
+        self.dialog.Show()
+
 
     
     def addSizer(self, list, sizer):
         for i in list:
             sizer.Add(i, flag=wx.EXPAND | wx.ALL, border=8)
         return 
+
+    def refreshEntries(self, event):
+        # get entries
+
+        #display them..
+        pass
