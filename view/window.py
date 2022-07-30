@@ -10,7 +10,7 @@ at stratup.
 
 import wx
 
-from view import mainpanel
+from view import mainpanel, resultpanel
 
 
 class Window(wx.Frame):
@@ -23,7 +23,9 @@ class Window(wx.Frame):
         vSizer = wx.BoxSizer(wx.VERTICAL)
         notebook = wx.Notebook(self, wx.RIGHT, size=wx.Size(900, 700))
         defaultPanel = mainpanel.MainPanel(notebook)
-        notebook.AddPage(defaultPanel, "entries")
+        resultPanel = resultpanel.ResultPanel(notebook)
+        notebook.AddPage(defaultPanel, "Entries")
+        notebook.AddPage(resultPanel, "Result")
         self.addSizer([notebook], vSizer)
 
         self.SetSizer(vSizer)

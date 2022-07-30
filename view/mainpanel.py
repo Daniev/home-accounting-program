@@ -10,22 +10,23 @@ import wx
 
 from view import dialog
 
-
+WIDTHSIZE = 900
 class MainPanel(wx.Panel):
     def __init__(self, parent):
-        super().__init__(parent, size=wx.Size(900,700))
+        super().__init__(parent, size=wx.Size(900,WIDTHSIZE))
         self.dialog = dialog.Dialog(self)
         self.makeContent()
 
     def makeContent(self):
         # show entries
         vSizer =wx.BoxSizer(wx.VERTICAL)
+        columnWidth = int(WIDTHSIZE // 5 - 2) 
         self.displayEntries = wx.ListView(self)
-        self.displayEntries.InsertColumn(0, "month")
-        self.displayEntries.InsertColumn(1, "value")
-        self.displayEntries.InsertColumn(2, "post")
-        self.displayEntries.InsertColumn(3, "payed_by")
-        self.displayEntries.InsertColumn(4, "comment")
+        self.displayEntries.InsertColumn(0, "month", width=columnWidth)
+        self.displayEntries.InsertColumn(1, "value", width=columnWidth)
+        self.displayEntries.InsertColumn(2, "post", width=columnWidth)
+        self.displayEntries.InsertColumn(3, "payed_by", width=columnWidth)
+        self.displayEntries.InsertColumn(4, "comment", width=columnWidth)
 
         # make entries button
         addButton = wx.Button(self, label="add entry")
