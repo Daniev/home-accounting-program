@@ -9,6 +9,13 @@ from control import startup
 
 BANKS = ["user_account", "bills_account", "short_savings", "long_savings"]
 
+def BALANCE_ARRAY():
+    dict = BALANCE_CATEGORIES()
+    arr = []
+    for category in dict:
+        arr.append(category)
+    return arr
+
 def BALANCE_CATEGORIES():
     """Dicts where:
         key = balance name

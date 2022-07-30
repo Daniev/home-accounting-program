@@ -4,8 +4,10 @@ dialog
 popup for adding entries
 --------------------------------------
 """
+
 import wx
 
+from control import date
 from myLogger import log
 from tweakable import BANKS, RESULT_CATEGORIES
 
@@ -20,7 +22,10 @@ class Dialog (wx.Dialog):
         mSizer = wx.BoxSizer(wx.HORIZONTAL)
         infMonth = wx.StaticText(self, label="Enter month: ex 'jan'")
         self.inputMonth = wx.TextCtrl(self)
+        currentMonth =date.getCurrentMonth()
+        self.inputMonth.SetValue(date.getMonthText(currentMonth))
         self.addSizer([infMonth, self.inputMonth], mSizer)
+
 
         vaSizer = wx.BoxSizer(wx.HORIZONTAL)
         infValue = wx.StaticText(self, label="Enter value: ex 4000")
