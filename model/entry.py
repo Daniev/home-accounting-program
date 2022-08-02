@@ -5,9 +5,9 @@ entry class for storing entries and
 validating input data
 ---------------------------------------
 """
-from ..myLogger import log
+from myLogger import log
 # TODO IMPORT TWEAKABLE
-from ..tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
+from tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
 
 
 class Entry:

@@ -5,7 +5,7 @@ maps dictionaries (output/input from json files)
 to model classes used to create the interface for the backend.
 ------------------------
 """
-from ..model import balance, entry, result
+from model import balance, entry, result
 
 
 class BalMapper():

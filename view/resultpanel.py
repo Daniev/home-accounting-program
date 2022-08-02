@@ -8,8 +8,9 @@ functionality
 """
 import wx
 
+from control import interface
 from myLogger import log
-from tweakable import BALANCE_ARRAY, BALANCE_CATEGORIES
+from tweakable import BALANCE_ARRAY, BALANCE_CATEGORIES, RESULT_CATEGORIES
 
 WIDTHSIZE = 900
 
@@ -20,18 +21,31 @@ class ResultPanel(wx.Panel):
         self.Dialog = B2B(self)
         self.makeResultTable()
         self.makeBalanceTable() 
-        b2bButton = wx.Button(self, label="B2B")
-        b2bButton.Bind(wx.EVT_BUTTON, self.openB2B)
-        self.addToSizer([b2bButton], self.vSizer)
+        self.makeButton()
         self.SetSizer(self.vSizer)
 
 
+    def makeButton(self):
+        b2bButton = wx.Button(self, label="B2B")
+        b2bButton.Bind(wx.EVT_BUTTON, self.openB2B)
+        self.addToSizer([b2bButton], self.vSizer)
+
+
+
     def makeResultTable(self): 
-        label = wx.StaticText(self, label="Result")
+        label = wx.StaticText(self, label="Current Result")
         self.displayResult = wx.ListView(self)
         columWidth = int(WIDTHSIZE // 2 - 3)
         self.displayResult.InsertColumn(0, "Category",width=columWidth)
         self.displayResult.InsertColumn(1, "Value", width=columWidth) # change to monthname
+
+        index = 0
+        allResults = {"category": "hobby", "value": 5000}
+        allResults = interface.getResult()
+        # will be a list of results in class mode...
+        for cat in allResults: 
+            self.displayResult.InsertItem(index, cat.name)
+            self.displayResult.SetItem(index, 1, str(cat.value))
         self.addToSizer([label, self.displayResult], self.vSizer)
  
 
@@ -41,6 +55,12 @@ class ResultPanel(wx.Panel):
         self.displayBalance = wx.ListView(self)
         self.displayBalance.InsertColumn(0, "Category", width=columnWidth)
         self.displayBalance.InsertColumn(1, "Value", width=columnWidth)
+
+        index = 0
+        allBalances = interface.getBalance()
+        for cat in allBalances:
+            self.displayBalance.InsertItem(index, cat.name)
+            self.displayBalance.SetItem(index, 1, cat.valueStr())
         self.addToSizer([label2, self.displayBalance], self.vSizer)
 
     def addToSizer(self, list, sizer):

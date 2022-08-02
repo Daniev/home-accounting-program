@@ -4,9 +4,8 @@ interface
 provides an interface from view to rest and back
 -----------------------------------
 """
-import filehandler as fh
-from dictmapper import *
-
+from control import dictmapper as dm
+from control import filehandler as fh
 from myLogger import log
 
 
@@ -15,7 +14,7 @@ def getResult():
     results =fh.openFile("results.json")
     cResults = []
     for result in results:
-        cResults.append(ResMapper.dictToClass(result, results[result]))
+        cResults.append(dm.ResMapper.dictToClass(result, results[result]))
 
     log.info("fetched stored results..")
     return cResults
@@ -28,7 +27,7 @@ def getBalance():
      
     cBalances = []
     for balance in balances:
-        cBalances.append(BalMapper.dictToClass(balance, balances[balance]))
+        cBalances.append(dm.BalMapper.dictToClass(balance, balances[balance]))
     log.info("Fetched stored balances..")
     return cBalances
 
@@ -36,7 +35,7 @@ def getBalance():
 def writeResult(results):
     data = []
     for result in results:
-        data.append(ResMapper.classToDict(result)) 
+        data.append(dm.ResMapper.classToDict(result)) 
     fh.writeFile("results.json", data)
     log.info("results are written..")
     return
@@ -45,7 +44,7 @@ def writeResult(results):
 def writeBalance(balances):
     data = {}
     for balance in balances:
-        temp = BalMapper.classToDict(balance)
+        temp = dm.BalMapper.classToDict(balance)
         for t in temp: # move the key t to data {t: {iv v}} becomes t: {iv v}
             data[t] = temp[t]
 
@@ -57,7 +56,7 @@ def getEntries():
     entries=fh.openFile("entries.json")
     cEntries= []
     for entry in entries:
-        cEntries.append(EntryMapper.dictToClass(entry))
+        cEntries.append(dm.EntryMapper.dictToClass(entry))
 
     log.info("fetched stored entries..")
     return cEntries
@@ -66,7 +65,7 @@ def getEntries():
 def writeEntries(entries):
     data = []
     for entry in entries:
-        data.append(EntryMapper.classToDict(entry))
+        data.append(dm.EntryMapper.classToDict(entry))
 
     fh.writeFile("entries.json", data)
     log.info("entries are written..")
