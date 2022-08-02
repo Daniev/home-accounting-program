@@ -5,15 +5,16 @@ entry class for storing entries and
 validating input data
 ---------------------------------------
 """
+from myLogger import log
 # TODO IMPORT TWEAKABLE
-from ..tweakable import RESULT_CATEGORIES
+from tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
 
 
 class Entry:
-    """Entry: date, value, post, comment"""
-    def __init__(self, date, value, post,comment):
-        if self.checkValue(date):
-            self.date = date
+    """Entry: month, value, post, payBy, comment"""
+    def __init__(self, month, value, post, payBy,comment):
+        if self.checkMonth(month):
+            self.month = month
 
         if self.checkValue(value):
             self.value = value
@@ -21,6 +22,9 @@ class Entry:
         if self.checkPost(post):
             self.post = post
 
+
+        if self.checkPayBy(payBy):
+            self.payBy = payBy
 
         self.comment = comment
         self.isValidInput = True
@@ -38,7 +42,28 @@ class Entry:
         try:
             value = int(value)
         except ValueError:
-            print("ERROR: value entered is not an int!")
+            log.error("value entered is not an int!")
             self.isValidInput = False
             return False
         return True
+
+
+    def checkMonth(self, month):
+        allMonths = ["jan", "feb", "mar", "apr", "may",
+                "jun", "jul", "aug", "sep", "okt", "nov",
+                "des"]
+        for correct in allMonths:
+            if month == correct:
+                return True
+        log.error("Month is not a valid output...")
+        self.isValidInput = False
+        return False
+
+
+    def checkPayBy(self, payBy):
+        for bal in BALANCE_CATEGORIES():
+            if payBy == bal:
+                return True
+        self.isValidInput = False
+        log.error("PayBy value is invalid...")
+        return False

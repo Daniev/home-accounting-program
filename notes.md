@@ -11,23 +11,30 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
   - resultmanager
 - create project structure (DONE)
 
+- Do i need a result class????
 
-
-### branch: feat: data setup
+### branch: feat: data setup (DONE)
 - feat: make files startup(DONE)
 - feat: setup data files (startup)
-- feat: make dictmapper
+  1. finish tweakable.py (DONE)
+  2. add to makeFiles()(DONE)
+- feat: make dictmapper(DONE)
 
 ### branch: feat: gui
-- feat: main window
-- feat: popup window/ entries can be created by user
+- feat: main window (DONE)
+- feat: popup window/ entries can be created by user (DONE)
+    include: pay_by (DONE)
 - feat: balance sheet can be viewed
 - feat: results can be seen
 extra:
 
 - feat: results can be seen for different months
+  - requires new json format or multiple files..
 
 ### branch: feat: data manipulation
 - feat: entries get stored
 - feat: entries changes balance values
 - feat: entries changes result values
+
+## extra features:
+  extra button and dialog for special transfers -> like between two balance accounts... (GUI PART DONE)

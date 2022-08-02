@@ -21,4 +21,5 @@ class Balance:
 
     def valueStr(self):
         """For gui display"""
-        return str(self.value)
+
+        return str(self.value + self.initValue)
