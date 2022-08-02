@@ -20,12 +20,12 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
   2. add to makeFiles()(DONE)
 - feat: make dictmapper(DONE)
 
-### branch: feat: gui
+### branch: feat: gui (DONE)
 - feat: main window (DONE)
 - feat: popup window/ entries can be created by user (DONE)
     include: pay_by (DONE)
-- feat: balance sheet can be viewed
-- feat: results can be seen
+- feat: balance sheet can be viewed(DONE)
+- feat: results can be seen (DONE)
 extra:
 
 - feat: results can be seen for different months
