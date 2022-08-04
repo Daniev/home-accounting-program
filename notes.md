@@ -1,6 +1,10 @@
 # Temporary notes for project
 
 
+TODO:
+make a functioning refresh
+ensure that wrong inputs doesnt destroy the system
+
 ## Execution flow:
 
 tweakable -> startup/filecreation -> windowstartup -> input -> writeFile

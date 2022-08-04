@@ -16,6 +16,7 @@ class Dialog (wx.Dialog):
     def __init__(self, parent):
         super().__init__(parent, size=wx.Size(600, 500), title="add entry")
         self.makeContent()
+        self.Bind(wx.EVT_BUTTON, self.moveEventUp)
 
     def makeContent(self):
         vSizer = wx.BoxSizer(wx.VERTICAL)
@@ -93,8 +94,14 @@ class Dialog (wx.Dialog):
         payBy = self.inputPayBy.GetValue()
         comment = self.inputComment.GetValue()
 
-        interface.EntryHandler.addNewEntry(month, value, post, payBy, comment)
+        interface.addNewEntry(month, value, post, payBy, comment)
         self.resetInputs()
 
     def exitDialog(self, event):
-        self.Destroy()
+        print("Exiting dialog from dialog")
+        event.Skip()
+
+    def moveEventUp(self, event):
+        print("Got to dialog self..")
+        event.Skip()
+        self.Hide()

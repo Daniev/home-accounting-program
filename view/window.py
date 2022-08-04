@@ -20,12 +20,14 @@ class Window(wx.Frame):
 
     def makeContent(self):
         vSizer = wx.BoxSizer(wx.VERTICAL)
-        notebook = wx.Notebook(self, wx.RIGHT, size=wx.Size(900, 700))
-        defaultPanel = mainpanel.MainPanel(notebook)
-        resultPanel = resultpanel.ResultPanel(notebook)
-        notebook.AddPage(defaultPanel, "Entries")
-        notebook.AddPage(resultPanel, "Result")
-        self.addSizer([notebook], vSizer)
+        self.notebook = wx.Notebook(self, wx.RIGHT, size=wx.Size(900, 700))
+        self.defaultPanel = mainpanel.MainPanel(self.notebook)
+        self.resultPanel = resultpanel.ResultPanel(self.notebook)
+        self.notebook.AddPage(self.defaultPanel, "Entries")
+        self.notebook.AddPage(self.resultPanel, "Result")
+        self.addSizer([self.notebook], vSizer)
+        self.notebook.Bind(wx.EVT_BUTTON, self.sendUp)
+        self.Bind(wx.EVT_BUTTON, self.refreshAll)
 
         self.SetSizer(vSizer)
         self.Show()
@@ -34,3 +36,12 @@ class Window(wx.Frame):
         for i in list:
             sizer.Add(i, flag=wx.EXPAND | wx.ALL, border=8)
         return
+
+    def refreshAll(self, event):
+        print("exit event got to window.py")
+        self.defaultPanel = mainpanel.MainPanel(self.notebook)
+        self.resultPanel = resultpanel.ResultPanel(self.notebook)
+
+    def sendUp(self, event):
+        print("Event got to notebooks")
+        event.Skip()

@@ -21,7 +21,7 @@ class BalMapper():
     @staticmethod
     def classToDict(balInstance):
         dict = {}
-        dict[balInstance.name] = {"inital_value": balInstance.initV,
+        dict[balInstance.name] = {"init_value": balInstance.initValue,
                                   "value": balInstance.value}
         return dict
 

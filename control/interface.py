@@ -32,9 +32,9 @@ class FileHandler:
         """returns list of balance instances"""
         balances = fh.openFile("balances.json")
 
-        cBalances = []  
-        for balance in balances:
-            cBalances.append(dm.BalMapper.dictToClass(balance, balances[balance]))
+        cBalances = []
+        for bal in balances:
+            cBalances.append(dm.BalMapper.dictToClass(bal, balances[bal]))
         log.info("Fetched stored balances..")
         return cBalances
 
@@ -52,7 +52,8 @@ class FileHandler:
         data = {}
         for bal in balances:
             temp = dm.BalMapper.classToDict(bal)
-            for t in temp:  # move the key t to data {t: {iv v}} becomes t: {iv v}
+            # moves the key t to data {t: {iv v}} becomes t: {iv v}
+            for t in temp:
                 data[t] = temp[t]
 
         fh.writeFile("balances.json", data)
@@ -78,17 +79,14 @@ class FileHandler:
         log.info("entries are written..")
 
 
-class EntryHandler:
-    def __init__(self) -> None:
-        pass
+def addNewEntry(month, value, post, payBy, comment):
+    newEntry = entry.Entry(month, value, post, payBy, comment)
+    entries = FileHandler.getEntries()
+    entries.append(newEntry)
+    FileHandler.writeEntries(entries)
 
-    @staticmethod
-    def addNewEntry(month, value, post, payBy, comment):
-        newEntry = entry.Entry(month, value, post, payBy, comment)
-        entries = FileHandler.getEntries()
-        entries.append(newEntry)
-        FileHandler.writeEntries(entries)
-        log.info("Success!")
+    log.info("Successfully added entry!")
+    updateBalance(newEntry)
 
 
 def updateBalance(entry):
@@ -96,7 +94,15 @@ def updateBalance(entry):
 
     for income in LIST_OF_INCOMES:
         if entry.post == income:
-            oldBalance[entry.payBy] += entry.value
+            for bal in oldBalance:
+                if bal == entry.payBy:
+                    bal["value"] += entry.value
+
         else:
             # subtract entry value from selected bank account
-            oldBalance[entry.payBy] -= entry.value
+            for bal in oldBalance:
+                if bal == entry.payBy:
+                    bal["value"] -= entry.value
+
+        FileHandler.writeBalance(oldBalance)
+        log.info("Balance was updated...")

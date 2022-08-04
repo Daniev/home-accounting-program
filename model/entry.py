@@ -30,7 +30,7 @@ class Entry:
 
     def checkPost(self, post):
         """Checks if post is a valid post"""
-        for exPost in RESULT_CATEGORIES():
+        for exPost in RESULT_CATEGORIES:
             if exPost == post:
                 return True
         return False
@@ -56,9 +56,12 @@ class Entry:
         return False
 
     def checkPayBy(self, payBy):
-        for bal in BALANCE_CATEGORIES():
+        for bal in BALANCE_CATEGORIES:
             if payBy == bal:
                 return True
         self.isValidInput = False
         log.error("PayBy value is invalid...")
         return False
+
+    def valueStr(self):
+        return str(self.value)
