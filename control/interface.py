@@ -16,6 +16,7 @@ class FileHandler:
     and store new data"""
     def __init__(self) -> None:
         pass
+
     @staticmethod
     def getResult():
         """returns list of result instances"""
@@ -40,9 +41,9 @@ class FileHandler:
 
     @staticmethod
     def writeResult(results):
-        data = []
+        data = {}
         for res in results:
-            data.append(dm.ResMapper.classToDict(res))
+            data[res.name] = res.value
         fh.writeFile("results.json", data)
         log.info("results are written..")
         return
@@ -88,6 +89,7 @@ def addNewEntry(month, value, post, payBy, comment):
 
         log.info("Successfully added entry!")
         updateBalance(newEntry)
+        updateResult(newEntry)
 
     else:
         print("You did not enter a valid input...")
@@ -111,3 +113,13 @@ def updateBalance(entry):
 
         FileHandler.writeBalance(oldBalance)
         log.info("Balance was updated...")
+
+
+def updateResult(entry):
+    results = FileHandler.getResult()
+
+    for res in results:
+        if res.name == entry.post:
+            res.value += int(entry.value)
+    FileHandler.writeResult(results)
+    log.info("Results was updated...")

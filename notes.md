@@ -1,9 +1,6 @@
 # Temporary notes for project
 
-
-TODO:
-make a functioning refresh
-ensure that wrong inputs doesnt destroy the system
+dictmapper to results is wrong.  
 
 ## Execution flow:
 
@@ -36,9 +33,10 @@ extra:
   - requires new json format or multiple files..
 
 ### branch: feat: data manipulation
-- feat: entries get stored (DONE)
+- feat: entries get stored and displayed(DONE)
 - feat: entries changes balance values
 - feat: entries changes result values
+- feat: views get updated/refreshed when entering new values
 
 ## extra features:
   extra button and dialog for special transfers -> like between two balance accounts... (GUI PART DONE)

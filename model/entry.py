@@ -37,7 +37,6 @@ class Entry:
         log.error("Entered post is invalid!")
         return False
 
-
     def checkValue(self, value):
         try:
             value = int(value)

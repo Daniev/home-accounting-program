@@ -39,7 +39,6 @@ class ResultPanel(wx.Panel):
         self.displayResult.InsertColumn(1, "Value", width=columWidth)
 
         index = 0
-        allResults = {"category": "hobby", "value": 5000}
         allResults = interface.FileHandler.getResult()
         # will be a list of results in class mode...
         for cat in allResults:
