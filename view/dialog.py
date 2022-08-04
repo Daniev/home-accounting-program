@@ -8,7 +8,6 @@ popup for adding entries
 import wx
 
 from control import date, interface
-from model import entry
 from myLogger import log
 from tweakable import BANKS, RESULT_CATEGORIES
 
@@ -37,11 +36,11 @@ class Dialog (wx.Dialog):
         self.inputPost = wx.ComboBox(self)
         # loop to get RESULT_CATEGORIES
         i = 0
-        for category in RESULT_CATEGORIES():
+        for category in RESULT_CATEGORIES:
             self.inputPost.Insert(category, i)
             i += 1
 
-        self.inputPost.AutoComplete(RESULT_CATEGORIES())
+        self.inputPost.AutoComplete(RESULT_CATEGORIES)
         self.addSizer([infPost, self.inputPost], poSizer)
 
         payBySizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -94,12 +93,8 @@ class Dialog (wx.Dialog):
         payBy = self.inputPayBy.GetValue()
         comment = self.inputComment.GetValue()
 
-        newEntry = entry.Entry(month, value, post, payBy, comment)
-        entries = interface.getEntries()
-        entries.append(newEntry)
-        interface.writeEntries(entries)
+        interface.EntryHandler.addNewEntry(month, value, post, payBy, comment)
         self.resetInputs()
-        log.info("Success!")
 
     def exitDialog(self, event):
         self.Destroy()

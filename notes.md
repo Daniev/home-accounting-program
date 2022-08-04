@@ -32,7 +32,7 @@ extra:
   - requires new json format or multiple files..
 
 ### branch: feat: data manipulation
-- feat: entries get stored
+- feat: entries get stored (DONE)
 - feat: entries changes balance values
 - feat: entries changes result values
 

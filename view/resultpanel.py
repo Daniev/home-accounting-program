@@ -40,7 +40,7 @@ class ResultPanel(wx.Panel):
 
         index = 0
         allResults = {"category": "hobby", "value": 5000}
-        allResults = interface.getResult()
+        allResults = interface.FileHandler.getResult()
         # will be a list of results in class mode...
         for cat in allResults:
             self.displayResult.InsertItem(index, cat.name)
@@ -55,7 +55,7 @@ class ResultPanel(wx.Panel):
         self.displayBalance.InsertColumn(1, "Value", width=columnWidth)
 
         index = 0
-        allBalances = interface.getBalance()
+        allBalances = interface.FileHandler.getBalance()
         for cat in allBalances:
             self.displayBalance.InsertItem(index, cat.name)
             self.displayBalance.SetItem(index, 1, cat.valueStr())
@@ -95,13 +95,13 @@ class B2B(wx.Dialog):
         exitButton = wx.Button(self, label="Exit")
 
         index = 0
-        for category in BALANCE_CATEGORIES():
+        for category in BALANCE_CATEGORIES:
             self.inputB1.Insert(category, index)
             self.inputB2.Insert(category, index)
             index += 1
 
-        self.inputB1.AutoComplete(BALANCE_ARRAY())
-        self.inputB2.AutoComplete(BALANCE_ARRAY())
+        self.inputB1.AutoComplete(BALANCE_ARRAY)
+        self.inputB2.AutoComplete(BALANCE_ARRAY)
 
         self.addToSizer([label, self.inputB1], b1Sizer)
         self.addToSizer([label3, self.inputValue], valueSizer)

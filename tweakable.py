@@ -7,67 +7,45 @@ Used throughout the project
 """
 from control import startup
 
-BANKS = ["user_account", "bills_account", "short_savings", "long_savings"]
+"""
+-----------------------------------------------
+Balance and result handling
+-----------------------------------------
+"""
+# for the payBy choice
+BANKS = ["brukskonto", "regninger", "buffer", "langsiktig_sparing"]
 
-def BALANCE_ARRAY():
-    dict = BALANCE_CATEGORIES()
-    arr = []
-    for category in dict:
-        arr.append(category)
-    return arr
+# List of incomes used in balance handling
+LIST_OF_INCOMES = ["annen_inntekt", "lønn", "lånutbetaling"]
 
-def BALANCE_CATEGORIES():
-    """Dicts where:
-        key = balance name
-        value = init value"""
-    bc = {}
-    # accounts
-    bc["user_account"] = 0
-    bc["bills_account"] = 0
-    bc["short_savings"] = 0
-    bc["long_savings"] = 0
-    bc["bsu"] = 0
-    bc["credit_account"] = 0 # master card
+# dictionary of balance names and init values
+BALANCE_CATEGORIES = {"brukskonto": 0, "regninger": 0, "buffer": 0,
+                      "langsiktig_sparing": 0, "bsu": 0, "mastercard": 0,
 
-    # dept
-    bc["student_dept_m"] = 0
-    bc["student_dept_d"] = 0
-    bc["student_dept"] = 0
+                      "studentlån": 0, "studentlån_d": 0,
+                      "studentlån_m": 0,
 
-    # others
-    bc["interior"] = 0
-    bc["property"] = 0 # houses and such
-    bc["owed_taxes"] = 0
+                      "interiør": 0, "eiendom": 0, "skyldig_skatt": 0}
 
-    return bc
+# only balance names in a list
+BALANCE_ARRAY = []
+for i in BALANCE_CATEGORIES:
+    BALANCE_ARRAY.append(i)
 
+# list of all result categories
+RESULT_CATEGORIES = ["annen_inntekt", "lønn", "lånutbetaling",
 
-def RESULT_CATEGORIES():
-    """List of all result categories"""
-    rc = []
-    rc.append("other_income") # gifts, interests, investmentincome etch
-    rc.append("wages") # work income
-    rc.append("loan_payout") #income from loan
+                     "skatt", "lån_nedbetaling", "bil", "bilforsikring",
+                     "drivstoff", "annen_forsikring", "husleie", "strøm",
 
-    rc.append("taxes")
-    rc.append("loan_payoff") #payoff of loan
-    rc.append("car")
-    rc.append("car_insurance")
-    rc.append("fuel")
-    rc.append("other_insurance")
-    rc.append("house_rent")
-    rc.append("electricity")
-
-    rc.append("food")
-    rc.append("entertainment") # streaming services etc
-    rc.append("interior") # things needed in a household including tools
-    rc.append("hobby") # music equpment etc
-    return rc
+                     "mat", "underholdning", "interiør", "hobby"]
 
 
+"""
+---------------------------------------------------------------
+Run this script to reset the files of the project...
+--------------------------------------------------------------
+"""
 if __name__ == "__main__":
     # run tweakable to reset the datafiles
     startup.makeFiles()
-
-
- 
