@@ -13,6 +13,7 @@ from tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
 class Entry:
     """Entry: month, value, post, payBy, comment"""
     def __init__(self, month, value, post, payBy, comment):
+        self.isValidInput = True
         if self.checkMonth(month):
             self.month = month
 
@@ -26,14 +27,16 @@ class Entry:
             self.payBy = payBy
 
         self.comment = comment
-        self.isValidInput = True
 
     def checkPost(self, post):
         """Checks if post is a valid post"""
         for exPost in RESULT_CATEGORIES:
             if exPost == post:
                 return True
+        self.isValidInput = False
+        log.error("Entered post is invalid!")
         return False
+
 
     def checkValue(self, value):
         try:

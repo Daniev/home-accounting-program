@@ -81,12 +81,17 @@ class FileHandler:
 
 def addNewEntry(month, value, post, payBy, comment):
     newEntry = entry.Entry(month, value, post, payBy, comment)
-    entries = FileHandler.getEntries()
-    entries.append(newEntry)
-    FileHandler.writeEntries(entries)
+    if newEntry.isValidInput:
+        entries = FileHandler.getEntries()
+        entries.append(newEntry)
+        FileHandler.writeEntries(entries)
 
-    log.info("Successfully added entry!")
-    updateBalance(newEntry)
+        log.info("Successfully added entry!")
+        updateBalance(newEntry)
+
+    else:
+        print("You did not enter a valid input...")
+        return
 
 
 def updateBalance(entry):
