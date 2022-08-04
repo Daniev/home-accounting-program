@@ -5,6 +5,7 @@ result dataclass
 -------------------------
 """
 
+
 class Result:
     def __init__(self, catName, value):
 

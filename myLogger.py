@@ -14,4 +14,5 @@ def getLogger():
     log.addHandler(ch)
     return log
 
+
 log = getLogger()

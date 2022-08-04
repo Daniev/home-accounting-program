@@ -18,5 +18,5 @@ def openFile(filename):
 
 def writeFile(filename, data):
     """Dumps whole data to jsonfile and saves it."""
-    with open("data/"+filename,mode="w", encoding="utf8") as jsonFile:
+    with open("data/"+filename, mode="w", encoding="utf8") as jsonFile:
         json.dump(data, jsonFile, indent=4)

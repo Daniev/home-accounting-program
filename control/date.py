@@ -6,10 +6,11 @@ date
 
 from datetime import date
 
-MONTH_STRING =["jan", "feb", "mar", "apr", "may",
-            "jun", "jul", "aug", "sep", "okt", "nov",
-            "des"]
- 
+MONTH_STRING = ["jan", "feb", "mar", "apr", "may",
+                "jun", "jul", "aug", "sep", "okt", "nov",
+                "des"]
+
+
 def getCurrentMonth():
     """returns month number"""
     currentDate = date.today()

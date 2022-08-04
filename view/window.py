@@ -15,9 +15,8 @@ from view import mainpanel, resultpanel
 
 class Window(wx.Frame):
     def __init__(self):
-        super().__init__(parent=None, size=wx.Size(905, 705)) # add size and title
+        super().__init__(parent=None, size=wx.Size(905, 705))
         self.makeContent()
-
 
     def makeContent(self):
         vSizer = wx.BoxSizer(wx.VERTICAL)
@@ -30,8 +29,6 @@ class Window(wx.Frame):
 
         self.SetSizer(vSizer)
         self.Show()
-
-
 
     def addSizer(self, list, sizer):
         for i in list:

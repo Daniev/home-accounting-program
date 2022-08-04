@@ -4,6 +4,8 @@ balance
 balance dataclass
 -------------------------
 """
+
+
 class Balance:
     def __init__(self, balName, initV, value):
         self.name = balName
@@ -11,13 +13,11 @@ class Balance:
             self.initValue = initV
         self.value = value
 
-
     def checkiv(self, iv):
         """checks if init value is 0 or higher"""
         if iv < 0:
             return False
         return True
-
 
     def valueStr(self):
         """For gui display"""

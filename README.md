@@ -1,1 +1,6 @@
 # home-accounting-program
+A simple python gui based accounting program useable for accounting your personal finances... 
+I made this because I was bored of using exel - like software for this.
+
+## Features
+coming soon...

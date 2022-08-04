@@ -11,20 +11,19 @@ from myLogger import log
 
 def getResult():
     """returns list of result instances"""
-    results =fh.openFile("results.json")
+    results = fh.openFile("results.json")
     cResults = []
     for result in results:
         cResults.append(dm.ResMapper.dictToClass(result, results[result]))
 
     log.info("fetched stored results..")
     return cResults
-    
-    
+
 
 def getBalance():
     """returns list of balance instances"""
     balances = fh.openFile("balances.json")
-     
+
     cBalances = []
     for balance in balances:
         cBalances.append(dm.BalMapper.dictToClass(balance, balances[balance]))
@@ -35,7 +34,7 @@ def getBalance():
 def writeResult(results):
     data = []
     for result in results:
-        data.append(dm.ResMapper.classToDict(result)) 
+        data.append(dm.ResMapper.classToDict(result))
     fh.writeFile("results.json", data)
     log.info("results are written..")
     return
@@ -45,7 +44,7 @@ def writeBalance(balances):
     data = {}
     for balance in balances:
         temp = dm.BalMapper.classToDict(balance)
-        for t in temp: # move the key t to data {t: {iv v}} becomes t: {iv v}
+        for t in temp:  # move the key t to data {t: {iv v}} becomes t: {iv v}
             data[t] = temp[t]
 
     fh.writeFile("balances.json", data)
@@ -53,15 +52,15 @@ def writeBalance(balances):
 
 
 def getEntries():
-    entries=fh.openFile("entries.json")
-    cEntries= []
+    entries = fh.openFile("entries.json")
+    cEntries = []
     for entry in entries:
         cEntries.append(dm.EntryMapper.dictToClass(entry))
 
     log.info("fetched stored entries..")
     return cEntries
-    
-    
+
+
 def writeEntries(entries):
     data = []
     for entry in entries:

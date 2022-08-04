@@ -12,7 +12,7 @@ from tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
 
 class Entry:
     """Entry: month, value, post, payBy, comment"""
-    def __init__(self, month, value, post, payBy,comment):
+    def __init__(self, month, value, post, payBy, comment):
         if self.checkMonth(month):
             self.month = month
 
@@ -22,13 +22,11 @@ class Entry:
         if self.checkPost(post):
             self.post = post
 
-
         if self.checkPayBy(payBy):
             self.payBy = payBy
 
         self.comment = comment
         self.isValidInput = True
-
 
     def checkPost(self, post):
         """Checks if post is a valid post"""
@@ -36,7 +34,6 @@ class Entry:
             if exPost == post:
                 return True
         return False
-            
 
     def checkValue(self, value):
         try:
@@ -47,18 +44,16 @@ class Entry:
             return False
         return True
 
-
     def checkMonth(self, month):
         allMonths = ["jan", "feb", "mar", "apr", "may",
-                "jun", "jul", "aug", "sep", "okt", "nov",
-                "des"]
+                     "jun", "jul", "aug", "sep", "okt",
+                     "nov", "des"]
         for correct in allMonths:
             if month == correct:
                 return True
         log.error("Month is not a valid output...")
         self.isValidInput = False
         return False
-
 
     def checkPayBy(self, payBy):
         for bal in BALANCE_CATEGORIES():
