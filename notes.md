@@ -35,7 +35,8 @@ extra:
 - feat: entries get stored and displayed(DONE)
 - feat: entries changes balance values
 - feat: entries changes result values(DONE)
-- feat: views get updated/refreshed when entering new values
+- feat: views get updated/refreshed when entering new values(DONE)
+- feat: B2B dialog, change between balances, with same and oposite operation
 
 ## extra features:
   extra button and dialog for special transfers -> like between two balance accounts... (GUI PART DONE)

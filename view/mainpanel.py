@@ -65,10 +65,10 @@ class MainPanel(wx.Panel):
         return
 
     def refreshEntries(self, event):
+        print("----------------------REFRESHING-----------------")
         event.Skip()
 
     def exitDialogClicked(self, event):
-        print("Event got to main panell")
         event.Skip()
 
     def fillEntries(self):

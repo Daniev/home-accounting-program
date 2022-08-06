@@ -13,6 +13,7 @@ from view import window
 
 def main():
     """Main function"""
+    print("---------------Starting up ---------------")
     if startup.isFirstTime():
         startup.makeFiles()
     else:

@@ -38,7 +38,6 @@ class Window(wx.Frame):
         return
 
     def refreshAll(self, event):
-        print("exit event got to window.py")
         self.defaultPanel.displayEntries.DeleteAllItems()
         self.defaultPanel.fillEntries()
 
@@ -48,5 +47,4 @@ class Window(wx.Frame):
         self.resultPanel.fillBalance()
 
     def sendUp(self, event):
-        print("Event got to notebooks")
         event.Skip()

@@ -6,7 +6,7 @@ provides an interface from view to rest and back
 """
 from control import dictmapper as dm
 from control import filehandler as fh
-from model import balance, entry, result
+from model import entry
 from myLogger import log
 from tweakable import LIST_OF_INCOMES
 
@@ -98,21 +98,27 @@ def addNewEntry(month, value, post, payBy, comment):
 
 def updateBalance(entry):
     oldBalance = FileHandler.getBalance()
-
+    isIncome = False
     for income in LIST_OF_INCOMES:
         if entry.post == income:
-            for bal in oldBalance:
-                if bal == entry.payBy:
-                    bal["value"] += entry.value
+            isIncome = True
 
-        else:
-            # subtract entry value from selected bank account
-            for bal in oldBalance:
-                if bal == entry.payBy:
-                    bal["value"] -= entry.value
+    if isIncome:
+        for bal in oldBalance:
+            if bal.name == entry.payBy:
+                print("Its an income!!")
+                bal.value += int(entry.value)
+                print(f"balvalue {bal.value}, entryvalue: {entry.value}")
 
-        FileHandler.writeBalance(oldBalance)
-        log.info("Balance was updated...")
+    else:
+        # subtract entry value from selected bank account
+        for bal in oldBalance:
+            if bal.name == entry.payBy:
+                print(f"balvalue {bal.value}, entryvalue: {entry.value}")
+                bal.value -= int(entry.value)
+
+    FileHandler.writeBalance(oldBalance)
+    log.info("Balance was updated...")
 
 
 def updateResult(entry):
