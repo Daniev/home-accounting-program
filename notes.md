@@ -1,6 +1,5 @@
 # Temporary notes for project
 
-dictmapper to results is wrong.  
 
 ## Execution flow:
 
@@ -35,7 +34,7 @@ extra:
 ### branch: feat: data manipulation
 - feat: entries get stored and displayed(DONE)
 - feat: entries changes balance values
-- feat: entries changes result values
+- feat: entries changes result values(DONE)
 - feat: views get updated/refreshed when entering new values
 
 ## extra features:

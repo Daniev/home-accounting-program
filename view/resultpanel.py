@@ -38,13 +38,23 @@ class ResultPanel(wx.Panel):
         # TODO: change value to spesific month name
         self.displayResult.InsertColumn(1, "Value", width=columWidth)
 
+        self.fillResults()
+        self.addToSizer([label, self.displayResult], self.vSizer)
+
+    def fillResults(self):
         index = 0
         allResults = interface.FileHandler.getResult()
         # will be a list of results in class mode...
         for cat in allResults:
             self.displayResult.InsertItem(index, cat.name)
             self.displayResult.SetItem(index, 1, str(cat.value))
-        self.addToSizer([label, self.displayResult], self.vSizer)
+
+    def fillBalance(self):
+        index = 0
+        allBalances = interface.FileHandler.getBalance()
+        for cat in allBalances:
+            self.displayBalance.InsertItem(index, cat.name)
+            self.displayBalance.SetItem(index, 1, cat.valueStr())
 
     def makeBalanceTable(self):
         label2 = wx.StaticText(self, label="Current Balance")
@@ -53,11 +63,7 @@ class ResultPanel(wx.Panel):
         self.displayBalance.InsertColumn(0, "Category", width=columnWidth)
         self.displayBalance.InsertColumn(1, "Value", width=columnWidth)
 
-        index = 0
-        allBalances = interface.FileHandler.getBalance()
-        for cat in allBalances:
-            self.displayBalance.InsertItem(index, cat.name)
-            self.displayBalance.SetItem(index, 1, cat.valueStr())
+        self.fillBalance()
         self.addToSizer([label2, self.displayBalance], self.vSizer)
 
     def addToSizer(self, list, sizer):

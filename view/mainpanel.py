@@ -46,9 +46,9 @@ class MainPanel(wx.Panel):
         addButton = wx.Button(self, label="add entry")
         addButton.Bind(wx.EVT_BUTTON, self.showDialog)
 
-        # refreshButton = wx.Button(self, label="refresh entries")
-        # refreshButton.Bind(wx.EVT_BUTTON, self.refreshEntries)
-        self.addSizer([self.displayEntries, addButton], vSizer)
+        refreshButton = wx.Button(self, label="refresh entries")
+        refreshButton.Bind(wx.EVT_BUTTON, self.refreshEntries)
+        self.addSizer([self.displayEntries, addButton, refreshButton], vSizer)
 
         # after a new entry is added:
         self.SetSizer(vSizer)
@@ -64,6 +64,20 @@ class MainPanel(wx.Panel):
             sizer.Add(i, flag=wx.EXPAND | wx.ALL, border=8)
         return
 
+    def refreshEntries(self, event):
+        event.Skip()
+
     def exitDialogClicked(self, event):
         print("Event got to main panell")
         event.Skip()
+
+    def fillEntries(self):
+        entries = interface.FileHandler.getEntries()
+        index = 0
+        for ent in entries:
+            self.displayEntries.InsertItem(index, ent.month)
+            self.displayEntries.SetItem(index, 1, ent.valueStr())
+            self.displayEntries.SetItem(index, 2, ent.post)
+            self.displayEntries.SetItem(index, 3, ent.payBy)
+            self.displayEntries.SetItem(index, 4, ent.comment)
+            index += 1
