@@ -20,21 +20,23 @@ tweakable -> startup/filecreation -> windowstartup -> input -> writeFile
   2. add to makeFiles()(DONE)
 - feat: make dictmapper(DONE)
 
-### branch: feat: gui
+### branch: feat: gui (DONE)
 - feat: main window (DONE)
 - feat: popup window/ entries can be created by user (DONE)
     include: pay_by (DONE)
-- feat: balance sheet can be viewed
-- feat: results can be seen
+- feat: balance sheet can be viewed(DONE)
+- feat: results can be seen (DONE)
 extra:
 
 - feat: results can be seen for different months
   - requires new json format or multiple files..
 
 ### branch: feat: data manipulation
-- feat: entries get stored
+- feat: entries get stored and displayed(DONE)
 - feat: entries changes balance values
-- feat: entries changes result values
+- feat: entries changes result values(DONE)
+- feat: views get updated/refreshed when entering new values(DONE)
+- feat: B2B dialog, change between balances, with same and oposite operation
 
 ## extra features:
   extra button and dialog for special transfers -> like between two balance accounts... (GUI PART DONE)

@@ -21,7 +21,7 @@ def isFirstTime():
     except:
         log.info("First time -> making files..")
         return True
-        
+
 
 def makeFiles():
     log = getLogger()
@@ -34,7 +34,6 @@ def makeFiles():
 
     log.info("files created successfully...")
 
-
     fh.writeFile("balances.json", resetBalanceData())
     log.info("added balance values..")
 
@@ -42,22 +41,22 @@ def makeFiles():
     log.info("added resultvalues..")
 
 
-
 def resetResultData():
     """Converts the list to a dict where list
     becomes keys with value 0"""
     resData = {}
-    for resCat in RESULT_CATEGORIES():
+    for resCat in RESULT_CATEGORIES:
         resData[resCat] = 0
     return resData
 
 
 def resetBalanceData():
     balData = {}
-    balCats = BALANCE_CATEGORIES()
-    for balCat in balCats: 
-        balData[balCat] = {"init_value": balCats[balCat], "value": 0 }
+    balCats = BALANCE_CATEGORIES
+    for balCat in balCats:
+        balData[balCat] = {"init_value": balCats[balCat], "value": 0}
     return balData
 
+
 if __name__ == "__main__":
-   makeFiles() 
+    makeFiles()

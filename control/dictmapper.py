@@ -14,21 +14,22 @@ class BalMapper():
         pass
 
     @staticmethod
-    def dictToClass(name,dictValue):
+    def dictToClass(name, dictValue):
         return balance.Balance(name, dictValue["init_value"],
-                dictValue["value"])
+                               dictValue["value"])
 
     @staticmethod
     def classToDict(balInstance):
         dict = {}
-        dict[balInstance.name] = {"inital_value": balInstance.initV,
-                "value":balInstance.value}
+        dict[balInstance.name] = {"init_value": balInstance.initValue,
+                                  "value": balInstance.value}
         return dict
+
 
 class ResMapper():
     "Static Function class"
     def __init__(self) -> None:
-       pass
+        pass
 
     @staticmethod
     def dictToClass(key, value):
@@ -48,15 +49,16 @@ class EntryMapper():
 
     @staticmethod
     def dictToClass(dict):
-       return entry.Entry(dict["month"], dict["value"],
-               dict["post"], dict["payBy"], dict["comment"])
+        return entry.Entry(dict["month"], dict["value"],
+                           dict["post"], dict["payBy"], dict["comment"])
 
     @staticmethod
     def classToDict(res):
         return {"month": res.month, "value": res.value,
-                "post": res.post, "payBy": res.payBy,"comment": res.comment}
+                "post": res.post, "payBy": res.payBy, "comment": res.comment}
+
+
 if __name__ == "__main__":
-    balanceEntry = BalMapper.dictToClass("bank", {"init_value": 5000, "value":6000})
+    balanceEntry = BalMapper.dictToClass("bank", {"init_value": 5000,
+                                         "value": 6000})
     print(f"class: {balanceEntry.name}, {balanceEntry.value}")
-    
-    

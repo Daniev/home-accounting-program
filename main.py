@@ -13,6 +13,7 @@ from view import window
 
 def main():
     """Main function"""
+    print("---------------Starting up ---------------")
     if startup.isFirstTime():
         startup.makeFiles()
     else:
@@ -23,5 +24,6 @@ def main():
 
     app.MainLoop()
 
+
 if __name__ == "__main__":
-     main()
+    main()
