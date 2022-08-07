@@ -9,7 +9,7 @@ add a new entry
 import wx
 
 from control import interface
-from view import dialog
+from view import b2b, dialog
 
 # used to calculate the size of the listViews.
 WIDTHSIZE = 900
@@ -19,6 +19,7 @@ class MainPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent, size=wx.Size(900, WIDTHSIZE))
         self.dialog = dialog.Dialog(self)
+        self.b2b = b2b.B2B(self)
         self.makeContent()
 
     def makeContent(self):
@@ -48,7 +49,10 @@ class MainPanel(wx.Panel):
 
         refreshButton = wx.Button(self, label="refresh entries")
         refreshButton.Bind(wx.EVT_BUTTON, self.refreshEntries)
-        self.addSizer([self.displayEntries, addButton, refreshButton], vSizer)
+
+        b2bButton = wx.Button(self, label="b2b")
+        b2bButton.Bind(wx.EVT_BUTTON, self.openB2B)
+        self.addSizer([self.displayEntries, addButton, refreshButton, b2bButton], vSizer)
 
         # after a new entry is added:
         self.SetSizer(vSizer)
@@ -79,5 +83,9 @@ class MainPanel(wx.Panel):
             self.displayEntries.SetItem(index, 1, ent.valueStr())
             self.displayEntries.SetItem(index, 2, ent.post)
             self.displayEntries.SetItem(index, 3, ent.payBy)
-            self.displayEntries.SetItem(index, 4, ent.comment)
-            index += 1
+            self.displayEntries.SetItem(index, 4, ent.comment)  
+
+    def openB2B(self, event):
+        if not self.b2b:
+            self.b2b= B2B(self)
+        self.b2b.Show()

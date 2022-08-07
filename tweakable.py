@@ -13,17 +13,19 @@ Balance and result handling
 -----------------------------------------
 """
 # for the payBy choice
-BANKS = ["brukskonto", "regninger", "buffer", "langsiktig_sparing"]
+BANKS = ["brukskonto", "regninger", "buffer", "langsiktig_sparing",
+         "mastercard"]
 
 # List of incomes used in balance handling
-LIST_OF_INCOMES = ["annen_inntekt", "lønn", "lånutbetaling"]
+LIST_OF_INCOMES = ["annen_inntekt", "lønn"]
 
 # dictionary of balance names and init values
-BALANCE_CATEGORIES = {"brukskonto": 0, "regninger": 0, "buffer": 0,
-                      "langsiktig_sparing": 0, "bsu": 0, "mastercard": 0,
+BALANCE_CATEGORIES = {"brukskonto": 5442, "regninger": 9000, "buffer": 45000,
+                      "langsiktig_sparing": 356000, "bsu": 127000,
+                      "mastercard": 0,
 
-                      "studentlån": 0, "studentlån_d": 0,
-                      "studentlån_m": 0,
+                      "studentlån": 600000, "studentlån_d": 300000,
+                      "studentlån_m": 300000,
 
                       "interiør": 0, "eiendom": 0, "skyldig_skatt": 0}
 
@@ -33,9 +35,9 @@ for i in BALANCE_CATEGORIES:
     BALANCE_ARRAY.append(i)
 
 # list of all result categories
-RESULT_CATEGORIES = ["annen_inntekt", "lønn", "lånutbetaling",
+RESULT_CATEGORIES = ["annen_inntekt", "lønn",
 
-                     "skatt", "lån_nedbetaling", "bil", "bilforsikring",
+                     "skatt", "bil", "bilforsikring",
                      "drivstoff", "annen_forsikring", "husleie", "strøm",
 
                      "mat", "underholdning", "interiør", "hobby"]
