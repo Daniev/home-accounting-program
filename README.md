@@ -4,21 +4,21 @@ I made this because I was bored of using exel - like software for this.
 
 ## Features
 Add your entry by clicking the add entry button. 
-<img source="assets/defaultpanel.png">
+<img src="assets/defaultpanel.png"/>
 
 Then the following dialog will appear allowing you to enter your data.
-<img source="assets/entrydialog.png">
+<img src="assets/entrydialog.png"/>
 
 Press submit and the refresh button to see the entry in entries above the buttons
 
 
 Then, go to the result tab and see the result and balance.
-<img source="assets/resultpanel.png">
+<img src="assets/resultpanel.png"/>
 
 **Balance to balance**
 If you need to transfer money between accounts, or get a payout and or payment on loans, use the b2b button,
 and fill in the dialog and press submit.
-<img source="assets/b2b.png"> 
+<img src="assets/b2b.png"/> 
 
 ### Categories
 By editing tweakables.py one can create balance categories, result
