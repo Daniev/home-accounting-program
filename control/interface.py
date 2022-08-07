@@ -129,3 +129,35 @@ def updateResult(entry):
             res.value += int(entry.value)
     FileHandler.writeResult(results)
     log.info("Results was updated...")
+
+
+class B2BHandler:
+    def __init__(self) -> None:
+        pass
+
+    @staticmethod
+    def updateBalance(b1, b2, value, operation):
+        try:
+            value = int(value)
+        except ValueError:
+            log.error("Value is not int! Aborting..")
+            return
+        balances = FileHandler.getBalance()
+        if operation == "Same":
+            for bal in balances:
+                if bal.name == b1 or bal.name == b2:
+                    bal.value += value
+            log.info("Balance updated...")
+
+        elif operation == "Opposite":
+            for bal in balances:
+                if bal.name == b1:
+                    bal.value -= value
+                if bal.name == b2:
+                    bal.value += value
+            log.info("Balance updated...")
+        else:
+            log.error("Operation is not selected...")
+            return
+        FileHandler.writeBalance(balances)
+        return
