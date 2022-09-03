@@ -18,5 +18,12 @@ def getCurrentMonth():
 
 
 def getMonthText(monthNumber):
+    """
+    Args:
+        monthNumber (int): number of month 1-12
+
+    Returns:
+        string: month as string, ex: jan
+    """
     months = MONTH_STRING
     return months[monthNumber - 1]

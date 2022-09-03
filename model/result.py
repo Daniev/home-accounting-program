@@ -8,6 +8,12 @@ result dataclass
 
 class Result:
     def __init__(self, catName, value):
+        """Create a new result category
+
+        Args:
+            catName (string): name
+            value (int): start value, likely 0
+        """
 
         # add a name checker?
         self.isValid = True

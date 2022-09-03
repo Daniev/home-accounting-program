@@ -12,7 +12,17 @@ from tweakable import BALANCE_CATEGORIES, RESULT_CATEGORIES
 
 class Entry:
     """Entry: month, value, post, payBy, comment"""
+
     def __init__(self, month, value, post, payBy, comment):
+        """Creates an entry
+
+        Args:
+            month (string): month ex jan
+            value (int): value of the entry
+            post (string): the result category the entry should affect
+            payBy (string): account name who paid the value
+            comment (string): any comment of the entry...
+        """
         self.isValidInput = True
         if self.checkMonth(month):
             self.month = month
@@ -38,6 +48,14 @@ class Entry:
         return False
 
     def checkValue(self, value):
+        """Checks the validity of the value
+
+        Args:
+            value (int): hopefully int
+
+        Returns:
+            bool: True if valid.
+        """
         try:
             value = int(value)
         except ValueError:
@@ -47,6 +65,14 @@ class Entry:
         return True
 
     def checkMonth(self, month):
+        """Checks if month is entered successfully
+
+        Args:
+            month (string): month selected in entry
+
+        Returns:
+            bool: true if valid.
+        """
         allMonths = ["jan", "feb", "mar", "apr", "may",
                      "jun", "jul", "aug", "sep", "okt",
                      "nov", "des"]
@@ -58,6 +84,14 @@ class Entry:
         return False
 
     def checkPayBy(self, payBy):
+        """Checks validity of pay by value
+
+        Args:
+            payBy (string): balance account
+
+        Returns:
+            bool: true if valid.
+        """
         for bal in BALANCE_CATEGORIES:
             if payBy == bal:
                 return True
