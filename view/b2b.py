@@ -62,6 +62,11 @@ class B2B(wx.Dialog):
         return
 
     def submit(self, event):
+        """Submits the data
+
+        Args:
+            event (no idea): i was just told by internet to include this.
+        """
         log.info("Submitting...")
         b1 = self.inputB1.GetValue()
         b2 = self.inputB2.GetValue()
